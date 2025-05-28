@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caloriq - Nutrição que Transforma Vidas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #7FB069;
+            --primary-light: #A8D5A8;
+            --primary-dark: #5A8A4A;
+            --accent-color: #FFD23F;
+            --text-dark: #2C3E50;
+            --text-light: #7F8C8D;
+            --background: #FFFFFF;
+            --surface: #F8F9FA;
+            --gradient-bg: linear-gradient(135deg, #7FB069 0%, #A8D5A8 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        .hero {
+            background: var(--gradient-bg);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            padding: 60px 0;
+        }
+
+        .logo {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            animation: slideDown 1s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            animation: slideUp 1s ease-out 0.3s both;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeIn 1s ease-out 0.6s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--accent-color);
+            color: var(--text-dark);
+            padding: 18px 36px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(255, 210, 63, 0.3);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(255, 210, 63, 0.4);
+            animation: none;
+        }
+
+        .features {
+            padding: 100px 0;
+            background: var(--surface);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(127, 176, 105, 0.1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .feature-description {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .how-it-works {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-bg);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1.5rem auto;
+            box-shadow: 0 5px 15px rgba(127, 176, 105, 0.3);
+        }
+
+        .step-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .step-description {
+            color: var(--text-light);
+        }
+
+        .testimonials {
+            padding: 100px 0;
+            background: var(--surface);
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 0 auto;
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .testimonial-text {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+
+        .download-section {
+            padding: 100px 0;
+            background: var(--gradient-bg);
+            text-align: center;
+            color: white;
+        }
+
+        .download-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .download-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+
+        .download-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            padding: 15px 30px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 15px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .download-btn:hover {
+            background: rgba(255,255,255,0.2);
+            border-color: rgba(255,255,255,0.5);
+            transform: translateY(-3px);
+        }
+
+        .footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-light);
+        }
+
+        .footer-section a {
+            color: #BDC3C7;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-light);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        @media (max-width: 768px) {
+            .logo { font-size: 2.5rem; }
+            .hero-subtitle { font-size: 1.2rem; }
+            .hero-description { font-size: 1rem; }
+            .cta-button { padding: 15px 30px; font-size: 1.1rem; }
+            .section-title { font-size: 2rem; }
+            .download-buttons { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="logo">🥗 Caloriq</h1>
+                <p class="hero-subtitle">Nutrição que Transforma Vidas</p>
+                <p class="hero-description">
+                    Finalmente um app de nutrição que entende você! Planos personalizados, sem complicação, 
+                    sem dietas malucas. Só você, seus objetivos e muito sabor no dia a dia.
+                </p>
+                <a href="Caloriq.apk" class="cta-button">
+                    <i class="fas fa-download"></i>
+                    Baixar Grátis Agora
+                </a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Por que o Caloriq é Diferente?</h2>
+            <p class="section-subtitle">
+                Chega de apps complicados que mais atrapalham do que ajudam. Aqui é simples, gostoso e funciona de verdade!
+            </p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-user-heart feature-icon"></i>
+                    <h3 class="feature-title">100% Personalizado</h3>
+                    <p class="feature-description">
+                        Conte pra gente seus objetivos, alergias e até aqueles alimentos que você torce o nariz. 
+                        Criamos um plano só seu!
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fas fa-brain feature-icon"></i>
+                    <h3 class="feature-title">Cálculos Inteligentes</h3>
+                    <p class="feature-description">
+                        Nossos algoritmos calculam seu gasto calórico, IMC e criam um plano nutricional cientificamente 
+                        embasado, mas explicado de forma simples.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fas fa-gamepad feature-icon"></i>
+                    <h3 class="feature-title">Gamificação Divertida</h3>
+                    <p class="feature-description">
+                        Ganhe pontos, desbloqueie conquistas e transforme sua jornada nutricional numa aventura 
+                        cheia de recompensas!
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fas fa-tint feature-icon"></i>
+                    <h3 class="feature-title">Hidratação na Medida</h3>
+                    <p class="feature-description">
+                        Calculamos exatamente quanta água você precisa beber e te lembramos de forma gentil. 
+                        Seu corpo vai agradecer!
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fas fa-heart feature-icon"></i>
+                    <h3 class="feature-title">Totalmente Gratuito</h3>
+                    <p class="feature-description">
+                        Acreditamos que nutrição de qualidade é um direito, não um privilégio. Por isso, o Caloriq 
+                        é 100% gratuito, sempre!
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fas fa-mobile-alt feature-icon"></i>
+                    <h3 class="feature-title">Mobile First</h3>
+                    <p class="feature-description">
+                        Desenvolvido pensando no seu celular. Interface linda, rápida e que funciona perfeitamente 
+                        em qualquer lugar.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">Como Funciona?</h2>
+            <p class="section-subtitle">
+                Em 3 passos simples, você já está com seu plano personalizado nas mãos!
+            </p>
+
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Conte sua História</h3>
+                    <p class="step-description">
+                        Cadastre-se e nos conte sobre você: seus objetivos, alergias, preferências e estilo de vida. 
+                        Quanto mais soubermos, melhor será seu plano!
+                    </p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Mágica dos Cálculos</h3>
+                    <p class="step-description">
+                        Nosso sistema faz toda a matemática complexa pra você: calcula suas necessidades calóricas, 
+                        distribui os macronutrientes e gera seu plano personalizado.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Viva sua Melhor Versão</h3>
+                    <p class="step-description">
+                        Receba seu plano semanal, acompanhe sua hidratação, ganhe pontos por cada conquista e 
+                        transforme sua relação com a comida!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">O que Nossos Usuários Dizem</h2>
+            
+            <div class="testimonial-card">
+                <p class="testimonial-text">
+                    "Nunca imaginei que um app gratuito pudesse ser tão completo! O Caloriq entendeu minhas restrições 
+                    alimentares e criou um plano que realmente funciona."
+                </p>
+                <p class="testimonial-author">- Maria, 34 anos, Cabo de Santo Agostinho - PE</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section class="download-section" id="download">
+        <div class="container">
+            <h2 class="download-title">Pronto para Transformar sua Vida?</h2>
+            <p class="download-subtitle">
+                Baixe agora o Caloriq e comece sua jornada rumo a uma vida mais saudável e saborosa!
+            </p>
+            
+            <div class="download-buttons">
+                <a href="app/index.php" class="download-btn" onclick="handleDownload('web')">
+                    <i class="fas fa-globe"></i>
+                    <div>
+                        <div style="font-size: 0.8rem;">Acesse via</div>
+                        <div style="font-weight: 600;">Navegador Web</div>
+                    </div>
+                </a>
+                <a href="#" class="download-btn" onclick="handleDownload('android')">
+                    <i class="fab fa-google-play"></i>
+                    <div>
+                        <div style="font-size: 0.8rem;">Em breve na</div>
+                        <div style="font-weight: 600;">Google Play</div>
+                    </div>
+                </a>
+                <a href="#" class="download-btn" onclick="handleDownload('ios')">
+                    <i class="fab fa-apple"></i>
+                    <div>
+                        <div style="font-size: 0.8rem;">Em breve na</div>
+                        <div style="font-weight: 600;">App Store</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Caloriq</h3>
+                    <p>Democratizando o acesso à nutrição de qualidade para todos.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Links Úteis</h3>
+                    <a href="#como-funciona">Como Funciona</a>
+                    <a href="#sobre">Sobre Nós</a>
+                    <a href="#contato">Contato</a>
+                    <a href="#suporte">Suporte</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <a href="#privacidade">Política de Privacidade</a>
+                    <a href="#termos">Termos de Uso</a>
+                    <a href="#cookies">Política de Cookies</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Fique por Dentro</h3>
+                    <a href="#newsletter">Newsletter</a>
+                    <a href="#blog">Blog</a>
+                    <a href="#redes">Redes Sociais</a>
+                </div>
+            </div>
+            <div style="border-top: 1px solid #34495E; padding-top: 2rem; margin-top: 2rem;">
+                <p>&copy; 2025 Caloriq. Todos os direitos reservados. Feito com ❤️ para democratizar a nutrição.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Download handlers
+        function handleDownload(platform) {
+            // Analytics tracking
+            console.log(`Download attempt for platform: ${platform}`);
+            
+            if (platform === 'web') {
+                // Redirect to web app
+                alert('🎉 Redirecionando para o Caloriq Web App!\n\nEm alguns segundos você será levado para nossa versão web completa.');
+                // window.location.href = 'https://app.caloriq.com';
+            } else {
+                // Show coming soon message
+                alert(`📱 O Caloriq estará disponível na ${platform === 'android' ? 'Google Play' : 'App Store'} em breve!\n\nEnquanto isso, que tal experimentar nossa versão web? É igualinha ao app! 😉`);
+            }
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for scroll animations
+        document.querySelectorAll('.feature-card, .step, .testimonial-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Add some interactive hover effects
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Parallax effect for hero background
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            const rate = scrolled * -0.5;
+            hero.style.transform = `translateY(${rate}px)`;
+        });
+
+        // Add floating animation to CTA button on hover
+        const ctaButton = document.querySelector('.cta-button');
+        ctaButton.addEventListener('mouseenter', function() {
+            this.style.animation = 'none';
+        });
+        
+        ctaButton.addEventListener('mouseleave', function() {
+            this.style.animation = 'pulse 2s ease-in-out infinite';
+        });
+    </script>
+</body>
+</html>
