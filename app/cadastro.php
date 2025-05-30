@@ -158,6 +158,43 @@ if(isset($conexao) && $conexao instanceof mysqli) { mysqli_close($conexao); }
             box-shadow: var(--sombra-card); width: 100%; max-width: 480px; /* Um pouco mais largo para o formulário de cadastro */
             text-align: center; animation: fadeInScale 0.5s ease-out forwards;
         }
+
+        .alert-card {
+            background-color: #FEF2F2;
+            border: 2px solid #FCA5A5;
+            border-radius: var(--radius-input);
+            padding: 20px;
+            margin-bottom: 24px;
+            text-align: left;
+            animation: shake 0.5s ease-in-out;
+        }
+
+        .alert-card h3 {
+            color: #DC2626;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .alert-card p {
+            color: #991B1B;
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+        }
+
+        .alert-card .icon {
+            color: #DC2626;
+            font-size: 1.2rem;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
         @keyframes fadeInScale { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
 
         .auth-header h1 { font-size: 2.2rem; font-weight: 700; color: var(--cor-primaria-escura); margin-bottom: 8px; }
@@ -205,6 +242,11 @@ if(isset($conexao) && $conexao instanceof mysqli) { mysqli_close($conexao); }
 </head>
 <body>
     <div class="auth-container">
+        <div class="alert-card">
+            <h3><i class="fas fa-exclamation-triangle icon"></i> Atenção Importante!</h3>
+            <p>Se você é diabético(a) ou hipertenso(a), infelizmente não poderá utilizar o aplicativo Caloriq neste momento.</p>
+            <p>Estamos trabalhando para incluir funcionalidades específicas para essas condições em breve. Agradecemos sua compreensão!</p>
+        </div>
         <header class="auth-header">
             <h1>Crie sua Conta</h1>
             <p>É rapidinho! Preencha seus dados para começar no CalorIQ.</p>
